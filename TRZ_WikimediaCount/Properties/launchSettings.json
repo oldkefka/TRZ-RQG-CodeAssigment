@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TRZ_WikimediaCount": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}
