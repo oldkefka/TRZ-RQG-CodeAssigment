@@ -9,6 +9,7 @@ namespace TRZ_WikimediaCount.Application
 {
     public class PageViewLoader : IPageViewLoader
     {
+        private const string BaseURL = "BaseURL";
         private readonly IUrlFormatter urlFormatter;
         private readonly IStreamHandler streanHandler;
         private readonly ITempHandler tempHandler;
@@ -25,10 +26,10 @@ namespace TRZ_WikimediaCount.Application
         public List<HourDetail> PageViewMainProcess()
         {
             Console.WriteLine("01. Process Begin (it may take more than 5 minutes)");
-            var baseDate = Util.ConvertUTCDate(config["Datetime"]);
-            var hoursRequest = int.Parse(config["HoursRequest"]);
+            DateTime baseDate = Util.ConvertUTCDate(config["Datetime"]);
+            int hoursRequest = int.Parse(config["HoursRequest"]);
             Console.WriteLine("02. Get url list");
-            var UrlList = urlFormatter.GetListUrls(config["BaseURL"], baseDate, hoursRequest);
+            var UrlList = urlFormatter.GetListUrls(config[BaseURL], baseDate, hoursRequest);
             List<HourDetail> totalLines = new List<HourDetail>();
             Console.WriteLine("03. Iterate urls");
 

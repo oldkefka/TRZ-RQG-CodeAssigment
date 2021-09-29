@@ -10,6 +10,7 @@ namespace TRZ_WikimediaCount.Application
         public void PrintResults(List<HourDetail> pageViews)
         {
             PrintRow("DOMAIN_CODE", "PAGE_TITLE", "CNT");
+            PrintRow("-----------", "----------", "----");
             foreach (var pv in pageViews)
             {
                 PrintRow(pv.DomainCode, pv.PageTitle, pv.CountView.ToString());
@@ -25,7 +26,7 @@ namespace TRZ_WikimediaCount.Application
         }
         public string CenterAlign(string text, int width)
         {
-            text = text.Length > width ? text.Substring(0, width - 3) + "..." : text;
+            text = text.Length > width ? text.Substring(0, width - 3) + ".." : text;
 
             if (string.IsNullOrEmpty(text))
             {

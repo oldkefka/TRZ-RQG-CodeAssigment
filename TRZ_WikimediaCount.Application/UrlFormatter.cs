@@ -8,6 +8,8 @@ namespace TRZ_WikimediaCount.Application
 {
     public class UrlFormatter : IUrlFormatter
     {
+        private const string FILENAME_DATEFORMAT= "yyyyMMdd-HH0000";
+        private const string URL_DATEFORMAT = "yyyy/yyyy-MM";
         public List<HourFile> GetListUrls(string urlBase, DateTime time, int hours)
         {
             //Variables
@@ -32,9 +34,9 @@ namespace TRZ_WikimediaCount.Application
         {
             HourFile item = new HourFile
             {
-                FileName = $"{time:yyyyMMdd-HH0000}"
+                FileName = $"{time.ToString(FILENAME_DATEFORMAT)}"
             };
-            item.Url = new Uri($"{urlBase}{time:yyyy/yyyy-MM}/pageviews-{item.FileName}.gz");
+            item.Url = new Uri($"{urlBase}{time.ToString(URL_DATEFORMAT)}/pageviews-{item.FileName}.gz");
             return item;
         }
 
@@ -43,7 +45,6 @@ namespace TRZ_WikimediaCount.Application
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-                request.Method = "GET";
                 HttpWebResponse response = (HttpWebResponse)request.GetResponse();
                 int statusCode = (int)response.StatusCode;
                 if (statusCode >= 100 && statusCode < 400)
