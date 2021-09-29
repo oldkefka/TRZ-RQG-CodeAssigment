@@ -27,11 +27,19 @@ Relevant information in ..\TRZ-RQG-CodeAssigment\TRZ_WikimediaCount\appsettings.
 |   Temps:FileName   | Temp file name     | page-view-exe     |
 
 
-### Steps:
-1 - Get the URL list, with the [Datetime] in UTC, current by default, in a range of time bu [HoursRequest], using [BaseURL] as base path.
-2 - Iterate the urls to download the hour information (Page Views file) in memory stream.
-3 - Descompress the GZIp the stream in memory and read to get string list.
-4 - Instance objets of the class 'HourDetail' and add they to a list.
-5 - Everytime, concatenate (group) the list by DomainCode and PageTitle.
-6 - Get the top n or [SizeResult] or the ordered descending list.
+## Process Steps:
+1 - Get the URL list, with the [Datetime] in UTC, current by default, in a range of time bu [HoursRequest], using [BaseURL] as base path.<br /> 
+2 - Iterate the urls to download the hour information (Page Views file) in memory stream.<br /> 
+3 - Descompress the GZIp the stream in memory and read to get string list.<br /> 
+4 - Instance objets of the class 'HourDetail' and add they to a list.<br /> 
+5 - Everytime, concatenate (group) the list by DomainCode and PageTitle.<br /> 
+6 - Get the top n or [SizeResult] or the ordered descending list.<br /> 
 7 - Show the result.
+
+## Testing:
+Added Unit test for URLFormatter:
+- Get_correct_Url_from_UrlGenerator_NOW
+- Get_correct_Url_from_UrlGenerator_FixedDate
+- Check_existence_Url_from_UrlConectionValidator_OK
+- Check_existence_Url_from_UrlConectionValidator_Fail
+
